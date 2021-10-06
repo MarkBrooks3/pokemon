@@ -1,35 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import PokemonLink from './PokemonLink';
 
 const PokemonList = () => {
-  const [pokemon, setPokemon] = useState([]);
-  const [next, setNext] = useState('');
-  const [previous, setPrevious] = useState('');
+  const state = useSelector((state) => state.pokemonList);
 
-  const getPokemon = async (url) => {
-    const response = await axios.get(url);
-    setPokemon(response.data.results);
-    setNext(response.data.next);
-    setPrevious(response.data.previous);
-  };
-
-  useEffect(() => {
-    getPokemon('https://pokeapi.co/api/v2/pokemon');
-  }, []);
-
-  return (
+  return state.results ? (
     <div>
-      {pokemon.map((p) => (
-        <PokemonLink key={p.name} url={p.url} />
+      {state.results.map((p) => (
+        <PokemonLink key={p.name} name={p.name} />
       ))}
-      {previous ? (
-        <button onClick={() => getPokemon(previous)}>Prev</button>
-      ) : (
-        <div />
-      )}
-      {next ? <button onClick={() => getPokemon(next)}>Next</button> : <div />}
     </div>
+  ) : (
+    <div>Loading...</div>
   );
 };
 

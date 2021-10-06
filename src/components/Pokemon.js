@@ -1,19 +1,23 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
+import { addPokemon } from '../reducers/detailedPokemon';
 
 const Pokemon = () => {
   let { id } = useParams();
-  const [data, setData] = useState({});
+  const dispatch = useDispatch();
+  const pokemon = useSelector((state) => {
+    return state.detailedList.find((p) => p.id === Number(id));
+  });
 
   useEffect(() => {
-    axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`).then((response) => {
-      setData(response.data);
-      console.log(response.data);
-    });
-  }, [id]);
+    if (!pokemon) {
+      dispatch(addPokemon(id));
+    }
+  }, [pokemon, dispatch, id]);
 
-  return <div>{data.name}</div>;
+  return pokemon ? <div>{pokemon.name}</div> : <div>Loading...</div>;
 };
 
 export default Pokemon;

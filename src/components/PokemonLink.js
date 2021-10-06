@@ -1,17 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { addPokemon } from '../reducers/detailedPokemon';
 
-const PokemonLink = ({ url }) => {
-  const [data, setData] = useState({});
+const PokemonLink = ({ name }) => {
+  const dispatch = useDispatch();
+  const pokemon = useSelector((state) =>
+    state.detailedList.find((p) => p.name === name)
+  );
+
   useEffect(() => {
-    axios.get(url).then((response) => {
-      setData(response.data);
-    });
-  }, [url]);
-  return data.sprites ? (
-    <Link to={`/pokemon/${data.id}`}>
-      <img src={data.sprites.front_default} alt={data.name} />
+    if (!pokemon) {
+      dispatch(addPokemon(name));
+    }
+  }, [pokemon, name, dispatch]);
+
+  return pokemon ? (
+    <Link to={`/pokemon/${pokemon.id}`}>
+      <img src={pokemon.sprites.front_default} alt={pokemon.name} />
     </Link>
   ) : (
     <div />
