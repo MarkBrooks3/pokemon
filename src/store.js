@@ -1,11 +1,11 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import listReducer from './reducers/pokemonList';
-import detailedReducer from './reducers/detailedPokemon';
+import groupReducer from './reducers/group';
+import pokemonsReducer from './reducers/pokemons';
 
 const store = createStore(
-  combineReducers({ pokemonList: listReducer, detailedList: detailedReducer }),
+  combineReducers({ group: groupReducer, pokemons: pokemonsReducer }),
   composeWithDevTools(applyMiddleware(thunk))
 );
 

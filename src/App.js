@@ -3,13 +3,13 @@ import { useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Pokemon from './components/Pokemon';
 import PokemonList from './components/PokemonList';
-import { initializePokemon } from './reducers/pokemonList';
+import { initializeGroup } from './reducers/group';
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(initializePokemon());
+    dispatch(initializeGroup());
   });
 
   return (

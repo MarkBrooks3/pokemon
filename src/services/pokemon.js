@@ -13,9 +13,15 @@ const getOne = async (id) => {
   return response.data;
 };
 
+const getGroup = async (url) => {
+  const response = await axios.get(url);
+  return response.data;
+};
+
 const exports = {
   getAll,
   getOne,
+  getGroup,
 };
 
 export default exports;

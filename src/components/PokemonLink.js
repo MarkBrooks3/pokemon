@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addPokemon } from '../reducers/detailedPokemon';
+import { addPokemon } from '../reducers/pokemons';
 
 const PokemonLink = ({ name }) => {
   const dispatch = useDispatch();
   const pokemon = useSelector((state) =>
-    state.detailedList.find((p) => p.name === name)
+    state.pokemons.find((p) => p.name === name)
   );
 
   useEffect(() => {

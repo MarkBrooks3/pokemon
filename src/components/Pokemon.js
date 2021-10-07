@@ -1,14 +1,14 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-import { addPokemon } from '../reducers/detailedPokemon';
+import { addPokemon } from '../reducers/pokemons';
+//TODO: add alot of details for single pokemon page view
 
 const Pokemon = () => {
   let { id } = useParams();
   const dispatch = useDispatch();
   const pokemon = useSelector((state) => {
-    return state.detailedList.find((p) => p.id === Number(id));
+    return state.pokemons.find((p) => p.id === Number(id));
   });
 
   useEffect(() => {
@@ -17,7 +17,14 @@ const Pokemon = () => {
     }
   }, [pokemon, dispatch, id]);
 
-  return pokemon ? <div>{pokemon.name}</div> : <div>Loading...</div>;
+  return pokemon ? (
+    <div>
+      {pokemon.name}
+      {console.log(pokemon)}
+    </div>
+  ) : (
+    <div>Loading...</div>
+  );
 };
 
 export default Pokemon;
