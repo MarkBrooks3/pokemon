@@ -1,5 +1,4 @@
 import pokemonService from '../services/pokemon';
-//TODO: add single pokemon look but add to a list
 
 const reducer = (state = [], action) => {
   switch (action.type) {
@@ -14,21 +13,20 @@ const reducer = (state = [], action) => {
 
 export const initializeGroup = () => {
   return async (dispatch) => {
-    const pokemon = await pokemonService.getAll();
+    const pokemons = await pokemonService.getAll();
     dispatch({
       type: 'INIT_GROUP',
-      data: pokemon,
+      data: pokemons,
     });
   };
 };
 
 export const changeGroup = (url) => {
   return async (dispatch) => {
-    const pokemon = await pokemonService.getGroup(url);
-    console.log(pokemon);
+    const pokemons = await pokemonService.getUrl(url);
     dispatch({
       type: 'SET_GROUP',
-      data: pokemon,
+      data: pokemons,
     });
   };
 };
