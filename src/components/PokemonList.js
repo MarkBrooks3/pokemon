@@ -7,6 +7,7 @@ import PokemonLink from './PokemonLink';
 const StyledDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   width: 1000px;
 `;
 
