@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { addPokemon } from '../reducers/pokemons';
+import Types from './Types';
 
 const StyledLink = styled(Link)`
   display: flex;
@@ -38,6 +39,7 @@ const StyledImg = styled.img`
   height: 150px;
   background-color: white;
   border-radius: 20px 20px 0px 0px;
+
   margin: 15px 0px 5px 0px;
 `;
 
@@ -58,6 +60,7 @@ const PokemonLink = ({ name }) => {
       <StyledImg src={pokemon.sprites.front_default} alt={pokemon.name} />
       {pokemon.name}
       <Number>#{pokemon.id}</Number>
+      <Types types={pokemon.types} />
       {console.log(pokemon)}
     </StyledLink>
   ) : (
