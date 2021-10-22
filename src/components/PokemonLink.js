@@ -11,7 +11,7 @@ const StyledLink = styled(Link)`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 175px;
+  width: 200px;
   height: 200px;
   background-color: #f0f0f0;
   border-radius: 20px;
@@ -37,9 +37,8 @@ const Number = styled.div`
 
 const StyledImg = styled.img`
   height: 150px;
-  background-color: white;
+  background-color: #f0f0f0;
   border-radius: 20px 20px 0px 0px;
-
   margin: 15px 0px 5px 0px;
 `;
 
@@ -58,8 +57,8 @@ const PokemonLink = ({ name }) => {
   return pokemon ? (
     <StyledLink to={`/pokemon/${pokemon.id}`}>
       <StyledImg src={pokemon.sprites.front_default} alt={pokemon.name} />
-      {pokemon.name}
-      <Number>#{pokemon.id}</Number>
+      <Number>#{('000' + pokemon.id).substr(-3)}</Number>
+      {pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}
       <Types types={pokemon.types} />
       {console.log(pokemon)}
     </StyledLink>

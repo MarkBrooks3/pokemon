@@ -5,6 +5,7 @@ const Type = styled.div`
   padding: 0px 5px 0px 5px;
   border-radius: 5px;
   color: white;
+  margin: 3px;
   background-color: ${(props) => {
     switch (props.type) {
       case 'normal':
@@ -49,12 +50,20 @@ const Type = styled.div`
   }};
 `;
 
+const Holder = styled.div`
+  display: flex;
+`;
+
 const Types = ({ types }) => {
-  return types.map((type) => (
-    <Type key={type.name} type={type.type.name}>
-      {type.type.name}
-    </Type>
-  ));
+  return (
+    <Holder>
+      {types.map((type) => (
+        <Type key={type.name} type={type.type.name}>
+          {type.type.name}
+        </Type>
+      ))}
+    </Holder>
+  );
 };
 
 export default Types;

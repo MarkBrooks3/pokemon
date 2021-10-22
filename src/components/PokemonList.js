@@ -16,15 +16,17 @@ const PokemonList = () => {
   const state = useSelector((state) => state.group);
 
   return state.results ? (
-    <StyledDiv>
-      {state.results.map((p) => (
-        <PokemonLink key={p.name} name={p.name} />
-      ))}
+    <div>
+      <StyledDiv>
+        {state.results.map((p) => (
+          <PokemonLink key={p.name} name={p.name} />
+        ))}
+      </StyledDiv>
       <button onClick={() => dispatch(changeGroup(state.previous))}>
         Previous
       </button>
       <button onClick={() => dispatch(changeGroup(state.next))}>Next</button>
-    </StyledDiv>
+    </div>
   ) : (
     <div>Loading...</div>
   );
