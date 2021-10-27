@@ -22,7 +22,7 @@ const StyledLink = styled(Link)`
   font-family: VT323;
   font-size: 20px;
   box-shadow: 0px 0px 10px #f0f0f0;
-  transition: 0.3s;
+  transition: 500ms ease;
   &:hover {
     box-shadow: 0px 0px 20px #d0d0d0;
     transform: scale(1.05, 1.05);
