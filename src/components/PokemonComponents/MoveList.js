@@ -8,13 +8,14 @@ const MoveList = ({ moves }) => {
 
   return (
     <div>
+      <h3>Moves</h3>
       {moves.map((m) => {
         const versionDetails = m.version_group_details.find(
           (v) => v.version_group.name === generation
         );
 
         return versionDetails ? (
-          <li>
+          <li key={m.move.name}>
             {m.move.name} {versionDetails.level_learned_at}{' '}
             {versionDetails.move_learn_method.name}
           </li>

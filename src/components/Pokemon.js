@@ -5,6 +5,8 @@ import { setSpecies } from '../reducers/species';
 import { addPokemon } from '../reducers/pokemons';
 import Abilities from './PokemonComponents/Abilities';
 import MoveList from './PokemonComponents/MoveList';
+import Training from './PokemonComponents/Training';
+import Stats from './PokemonComponents/Stats';
 //TODO: add alot of details for single pokemon page view
 
 const Pokemon = () => {
@@ -23,13 +25,21 @@ const Pokemon = () => {
     }
   }, [pokemon, dispatch, id]);
 
-  return pokemon ? (
+  return pokemon && species.growth_rate ? (
     <div>
+      {console.log('Pokemon', pokemon)}
+      {console.log('species', species)}
+
       <h1>{pokemon.name}</h1>
       <Abilities abilities={pokemon.abilities} />
       <MoveList moves={pokemon.moves} />
-      {console.log(pokemon)}
-      {console.log(species)}
+      <Training
+        happiness={species.base_happiness}
+        exp={pokemon.base_experience}
+        catchRate={species.capture_rate}
+        growth={species.growth_rate.name}
+      />
+      <Stats stats={pokemon.stats} />
     </div>
   ) : (
     <div>Loading...</div>
