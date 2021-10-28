@@ -7,6 +7,7 @@ import Abilities from './PokemonComponents/Abilities';
 import MoveList from './PokemonComponents/MoveList';
 import Training from './PokemonComponents/Training';
 import Stats from './PokemonComponents/Stats';
+import Info from './PokemonComponents/Info';
 //TODO: add alot of details for single pokemon page view
 
 const Pokemon = () => {
@@ -40,6 +41,14 @@ const Pokemon = () => {
         growth={species.growth_rate.name}
       />
       <Stats stats={pokemon.stats} />
+      <Info
+        color={species.color}
+        numbers={species.pokedex_numbers}
+        types={pokemon.types}
+        genera={species.genera}
+        height={pokemon.height}
+        weight={pokemon.weight}
+      />
     </div>
   ) : (
     <div>Loading...</div>

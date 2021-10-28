@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { addPokemon } from '../reducers/pokemons';
-import Types from './Types';
+import Types from './PokemonComponents/Types';
 
 const StyledLink = styled(Link)`
   display: flex;
@@ -60,7 +60,6 @@ const PokemonLink = ({ name }) => {
       <Number>#{('000' + pokemon.id).substr(-3)}</Number>
       {pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}
       <Types types={pokemon.types} />
-      {console.log(pokemon)}
     </StyledLink>
   ) : (
     <div />
