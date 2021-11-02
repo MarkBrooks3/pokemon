@@ -8,7 +8,7 @@ import MoveList from './PokemonComponents/MoveList';
 import Training from './PokemonComponents/Training';
 import Stats from './PokemonComponents/Stats';
 import Info from './PokemonComponents/Info';
-//TODO: add alot of details for single pokemon page view
+//TODO: add evolution and maybe pokedex entries
 
 const Pokemon = () => {
   let { id } = useParams();

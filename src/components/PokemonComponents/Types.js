@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Type = styled.div`
-  padding: 0px 5px 3px 5px;
+  padding: 3px 5px 3px 5px;
   border-radius: 5px;
   color: white;
   margin: 3px;
