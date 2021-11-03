@@ -4,7 +4,7 @@ import { useParams } from 'react-router';
 import { setSpecies } from '../reducers/species';
 import { addPokemon } from '../reducers/pokemons';
 import Abilities from './PokemonComponents/Abilities';
-import MoveList from './PokemonComponents/MoveList';
+import MoveList from './PokemonComponents/Moves/MoveList';
 import Training from './PokemonComponents/Training';
 import Stats from './PokemonComponents/Stats';
 import Info from './PokemonComponents/Info';
