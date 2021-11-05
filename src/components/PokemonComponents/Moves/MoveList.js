@@ -25,6 +25,7 @@ const MoveList = ({ moves }) => {
             setTmMoves((prev) => [...prev, m]);
             break;
           case 'level-up':
+            m.level = versionDetails.level_learned_at;
             setLevelMoves((prev) => [...prev, m]);
             break;
           case 'tutor':
