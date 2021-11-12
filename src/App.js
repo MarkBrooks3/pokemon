@@ -6,6 +6,7 @@ import Nav from './components/Nav';
 import Pokemon from './components/Pokemon';
 import PokemonList from './components/PokemonList';
 import { initializeGroup } from './reducers/group';
+//TODO add page for single move and all moves
 
 const GlobalStyle = createGlobalStyle`
   body {

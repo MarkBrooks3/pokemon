@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Moves from './Moves';
-//TODO split moves up by learn method and sort by level
-//also ability to switch which moves are shown by generation
-//TODO LATER add details to all moves like typing and power by calling api
+//TODO ability to switch which moves are shown by generation
+//TODO add link for each move to have its own page
+//TODO MAYBE add details to all moves like typing and power by calling api
 
 const MoveList = ({ moves }) => {
   const [generation, setGeneration] = useState('ultra-sun-ultra-moon');
