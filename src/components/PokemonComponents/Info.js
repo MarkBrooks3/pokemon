@@ -1,6 +1,7 @@
 import React from 'react';
 import Types from './Types';
 import styled from 'styled-components';
+import Abilities from './Abilities';
 
 const StyledTable = styled.table`
   border-collapse: collapse;
@@ -34,7 +35,7 @@ const hectogramsToPounds = (hectograms) => {
   return `(${pounds}lbs)`;
 };
 
-const Info = ({ color, numbers, types, genera, height, weight }) => {
+const Info = ({ color, numbers, types, genera, height, weight, abilities }) => {
   return (
     <div>
       <h3>Info</h3>
@@ -79,6 +80,12 @@ const Info = ({ color, numbers, types, genera, height, weight }) => {
             <LabelCell>Color</LabelCell>
             <InfoCell>
               {color.name[0].toUpperCase() + color.name.slice(1)}
+            </InfoCell>
+          </StyledRow>
+          <StyledRow>
+            <LabelCell>Abilities</LabelCell>
+            <InfoCell>
+              <Abilities abilities={abilities} />
             </InfoCell>
           </StyledRow>
         </tbody>

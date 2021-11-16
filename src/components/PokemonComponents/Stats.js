@@ -30,17 +30,16 @@ const StatBar = styled.div`
   width: ${(props) => (props.value / 255) * 100}%;
   height: 0.75em;
   background-color: ${(props) => {
-    const percent = (props.value / 255) * 100;
     switch (true) {
-      case percent <= 10:
+      case props.value <= 20:
         return '#F34444';
-      case percent <= 20:
+      case props.value <= 60:
         return '#FF7F0F';
-      case percent <= 40:
+      case props.value <= 90:
         return '#FFDD57';
-      case percent <= 60:
+      case props.value <= 130:
         return '#A0E515';
-      case percent <= 80:
+      case props.value <= 150:
         return '#23CD5E';
       default:
         return '#00C2B8';

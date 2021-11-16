@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { setSpecies } from '../reducers/species';
 import { addPokemon } from '../reducers/pokemons';
-import Abilities from './PokemonComponents/Abilities';
 import MoveList from './PokemonComponents/Moves/MoveList';
 import Training from './PokemonComponents/Training';
 import Stats from './PokemonComponents/Stats';
@@ -32,7 +31,6 @@ const Pokemon = () => {
       {console.log('species', species)}
 
       <h1>{pokemon.name}</h1>
-      <Abilities abilities={pokemon.abilities} />
       <MoveList moves={pokemon.moves} />
       <Training
         happiness={species.base_happiness}
@@ -48,6 +46,7 @@ const Pokemon = () => {
         genera={species.genera}
         height={pokemon.height}
         weight={pokemon.weight}
+        abilities={pokemon.abilities}
       />
     </div>
   ) : (

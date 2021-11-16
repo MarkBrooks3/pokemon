@@ -3,7 +3,7 @@ import axios from 'axios';
 const baseUrl = 'https://pokeapi.co/api/v2/pokemon';
 
 const getAll = async () => {
-  const response = await axios.get(`${baseUrl}?limit=60`);
+  const response = await axios.get(`${baseUrl}?limit=898`);
   return response.data;
 };
 

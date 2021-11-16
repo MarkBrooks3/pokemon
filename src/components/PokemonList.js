@@ -18,8 +18,8 @@ const PokemonList = () => {
   return state.results ? (
     <div>
       <StyledDiv>
-        {state.results.map((p) => (
-          <PokemonLink key={p.name} name={p.name} />
+        {state.results.map((pokemon, index) => (
+          <PokemonLink key={index} name={pokemon.name} id={index + 1} />
         ))}
       </StyledDiv>
       <button onClick={() => dispatch(changeGroup(state.previous))}>

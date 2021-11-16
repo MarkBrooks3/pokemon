@@ -28,7 +28,7 @@ const formatName = (name) => {
 };
 
 const sortMoves = (moves) => {
-  if (moves[0] && moves[0].level) moves.sort((a, b) => a.level - b.level);
+  if (moves[0] && moves[0].level > -1) moves.sort((a, b) => a.level - b.level);
   else
     moves.sort((a, b) => {
       const textA = a.move.name;
@@ -40,13 +40,12 @@ const sortMoves = (moves) => {
 };
 
 const Moves = ({ moves }) => {
-  sortMoves(moves);
   return (
     <StyledTable>
       <tbody>
-        {moves.map((m) => (
+        {sortMoves(moves).map((m) => (
           <StyledRow key={m.move.name}>
-            {m.level && <NumberCell>{m.level}</NumberCell>}
+            {m.level > -1 && <NumberCell>{Number(m.level)}</NumberCell>}
             <InfoCell>{formatName(m.move.name)}</InfoCell>
           </StyledRow>
         ))}

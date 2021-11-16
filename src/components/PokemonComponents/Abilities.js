@@ -4,14 +4,13 @@ import React from 'react';
 const Abilities = ({ abilities }) => {
   return (
     <div>
-      <h3>Abilities</h3>
       {abilities.map((a) =>
         a.is_hidden ? (
-          <p key={a.slot}>{a.ability.name}(hidden)</p>
+          <li key={a.slot}>{a.ability.name}(hidden)</li>
         ) : (
-          <p key={a.slot}>
-            {a.slot}. {a.ability.name}
-          </p>
+          <li key={a.slot}>
+            {a.slot}.{a.ability.name}
+          </li>
         )
       )}
     </div>

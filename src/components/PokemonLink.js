@@ -56,7 +56,10 @@ const PokemonLink = ({ name }) => {
 
   return pokemon ? (
     <StyledLink to={`/pokemon/${pokemon.id}`}>
-      <StyledImg src={pokemon.sprites.front_default} alt={pokemon.name} />
+      <StyledImg
+        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
+        alt={pokemon.name}
+      />
       <Number>#{('000' + pokemon.id).substr(-3)}</Number>
       {pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}
       <Types types={pokemon.types} />
