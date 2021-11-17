@@ -1,10 +1,6 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { addPokemon } from '../reducers/pokemons';
-import Types from './PokemonComponents/Types';
 
 const StyledLink = styled(Link)`
   display: flex;
@@ -42,30 +38,16 @@ const StyledImg = styled.img`
   margin: 15px 0px 5px 0px;
 `;
 
-const PokemonLink = ({ name }) => {
-  const dispatch = useDispatch();
-  const pokemon = useSelector((state) =>
-    state.pokemons.find((p) => p.name === name)
-  );
-
-  useEffect(() => {
-    if (!pokemon) {
-      dispatch(addPokemon(name));
-    }
-  }, [pokemon, name, dispatch]);
-
-  return pokemon ? (
-    <StyledLink to={`/pokemon/${pokemon.id}`}>
+const PokemonLink = ({ name, id }) => {
+  return (
+    <StyledLink to={`/pokemon/${id}`}>
       <StyledImg
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
-        alt={pokemon.name}
+        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
+        alt={name}
       />
-      <Number>#{('000' + pokemon.id).substr(-3)}</Number>
-      {pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}
-      <Types types={pokemon.types} />
+      <Number>#{('000' + id).substr(-3)}</Number>
+      {name[0].toUpperCase() + name.slice(1)}
     </StyledLink>
-  ) : (
-    <div />
   );
 };
 

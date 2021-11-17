@@ -1,8 +1,7 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { changeGroup } from '../reducers/group';
 import PokemonLink from './PokemonLink';
+import pokemonService from '../services/pokemon';
 
 const StyledDiv = styled.div`
   display: flex;
@@ -12,21 +11,22 @@ const StyledDiv = styled.div`
 `;
 
 const PokemonList = () => {
-  const dispatch = useDispatch();
-  const state = useSelector((state) => state.group);
+  const [pokemons, setPokemons] = useState([]);
 
-  return state.results ? (
-    <div>
-      <StyledDiv>
-        {state.results.map((pokemon, index) => (
-          <PokemonLink key={index} name={pokemon.name} id={index + 1} />
-        ))}
-      </StyledDiv>
-      <button onClick={() => dispatch(changeGroup(state.previous))}>
-        Previous
-      </button>
-      <button onClick={() => dispatch(changeGroup(state.next))}>Next</button>
-    </div>
+  useEffect(() => {
+    const setData = async () => {
+      const newData = await pokemonService.getAll();
+      setPokemons(newData.results);
+    };
+    setData();
+  }, [setPokemons]);
+
+  return pokemons ? (
+    <StyledDiv>
+      {pokemons.map((pokemon, index) => (
+        <PokemonLink key={index} name={pokemon.name} id={index + 1} />
+      ))}
+    </StyledDiv>
   ) : (
     <div>Loading...</div>
   );

@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 import Nav from './components/Nav';
 import Pokemon from './components/Pokemon';
 import PokemonList from './components/PokemonList';
-import { initializeGroup } from './reducers/group';
 //TODO add page for single move and all moves
 //TODO fix scrolling issue
 
@@ -16,15 +14,6 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const App = () => {
-  const dispatch = useDispatch();
-  const group = useSelector((state) => state.group);
-
-  useEffect(() => {
-    if (group.length === 0) {
-      dispatch(initializeGroup());
-    }
-  }, [dispatch, group]);
-
   return (
     <Router>
       <GlobalStyle />

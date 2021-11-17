@@ -1,29 +1,26 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { setSpecies } from '../reducers/species';
-import { addPokemon } from '../reducers/pokemons';
 import MoveList from './PokemonComponents/Moves/MoveList';
 import Training from './PokemonComponents/Training';
 import Stats from './PokemonComponents/Stats';
 import Info from './PokemonComponents/Info';
+import pokemonServices from '../services/pokemon';
 //TODO: add evolution and maybe pokedex entries
 
 const Pokemon = () => {
   let { id } = useParams();
-  const dispatch = useDispatch();
-  const pokemon = useSelector((state) => {
-    return state.pokemons.find((p) => p.id === Number(id));
-  });
-  const species = useSelector((state) => state.species);
+  const [pokemon, setPokemon] = useState({});
+  const [species, setSpecies] = useState({});
 
   useEffect(() => {
-    if (!pokemon) {
-      dispatch(addPokemon(id));
-    } else {
-      dispatch(setSpecies(pokemon.species.url));
-    }
-  }, [pokemon, dispatch, id]);
+    const setData = async () => {
+      const pokemonData = await pokemonServices.getOne(id);
+      const speciesData = await pokemonServices.getUrl(pokemonData.species.url);
+      setPokemon(pokemonData);
+      setSpecies(speciesData);
+    };
+    setData();
+  }, [setSpecies, setPokemon, id]);
 
   return pokemon && species.growth_rate ? (
     <div>
