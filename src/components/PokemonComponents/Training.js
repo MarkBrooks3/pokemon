@@ -5,12 +5,12 @@ import styled from 'styled-components';
 
 const StyledTable = styled.table`
   border-collapse: collapse;
-  border-bottom: hsl(0, 0%, 95%) 1px solid;
+  border-bottom: hsl(0, 0%, 90%) 1px solid;
 `;
 
 const StyledRow = styled.tr`
   height: 2em;
-  border-top: hsl(0, 0%, 95%) 1px solid;
+  border-top: hsl(0, 0%, 90%) 1px solid;
 `;
 
 const LabelCell = styled.td`
@@ -23,9 +23,13 @@ const InfoCell = styled.td`
   padding: 0 0 0 1em;
 `;
 
+const Div = styled.div`
+  grid-area: training;
+`;
+
 const Training = ({ happiness, exp, catchRate, growth }) => {
   return (
-    <div>
+    <Div>
       <h3>Training</h3>
       <StyledTable>
         <tbody>
@@ -50,7 +54,7 @@ const Training = ({ happiness, exp, catchRate, growth }) => {
           </StyledRow>
         </tbody>
       </StyledTable>
-    </div>
+    </Div>
   );
 };
 

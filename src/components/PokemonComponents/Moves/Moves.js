@@ -3,12 +3,12 @@ import styled from 'styled-components';
 
 const StyledTable = styled.table`
   border-collapse: collapse;
-  border-bottom: hsl(0, 0%, 95%) 1px solid;
+  border-bottom: hsl(0, 0%, 90%) 1px solid;
 `;
 
 const StyledRow = styled.tr`
   height: 1.5em;
-  border-top: hsl(0, 0%, 95%) 1px solid;
+  border-top: hsl(0, 0%, 90%) 1px solid;
 `;
 
 const InfoCell = styled.td`

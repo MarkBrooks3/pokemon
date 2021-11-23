@@ -4,10 +4,12 @@ import PokemonLink from './PokemonLink';
 import pokemonService from '../services/pokemon';
 
 const StyledDiv = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: 1000px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
+  border: solid 3px red;
+  padding: 3em;
+  justify-content: center;
 `;
 
 const PokemonList = () => {

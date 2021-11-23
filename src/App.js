@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import Nav from './components/Nav';
 import Pokemon from './components/Pokemon';
 import PokemonList from './components/PokemonList';
@@ -13,19 +13,26 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const Page = styled.div`
+  max-width: 1250px;
+  margin: auto;
+`;
+
 const App = () => {
   return (
     <Router>
       <GlobalStyle />
       <Nav />
-      <Switch>
-        <Route path='/pokemon/:id'>
-          <Pokemon />
-        </Route>
-        <Route path='/'>
-          <PokemonList />
-        </Route>
-      </Switch>
+      <Page>
+        <Switch>
+          <Route path='/pokemon/:id'>
+            <Pokemon />
+          </Route>
+          <Route path='/'>
+            <PokemonList />
+          </Route>
+        </Switch>
+      </Page>
     </Router>
   );
 };

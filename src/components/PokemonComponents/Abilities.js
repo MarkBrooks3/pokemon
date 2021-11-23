@@ -1,16 +1,29 @@
 import React from 'react';
+import styled from 'styled-components';
 //TODO add styles
+
+const Ability = styled.li`
+  list-style-type: none;
+  padding: 2px;
+`;
+
+const Hidden = styled.li`
+  list-style-type: none;
+  color: hsl(0, 0%, 40%);
+  padding: 2px;
+  font-size: 0.9em;
+`;
 
 const Abilities = ({ abilities }) => {
   return (
     <div>
       {abilities.map((a) =>
         a.is_hidden ? (
-          <li key={a.slot}>{a.ability.name}(hidden)</li>
+          <Hidden key={a.slot}>{a.ability.name}(hidden)</Hidden>
         ) : (
-          <li key={a.slot}>
-            {a.slot}.{a.ability.name}
-          </li>
+          <Ability key={a.slot}>
+            {a.slot}. {a.ability.name}
+          </Ability>
         )
       )}
     </div>

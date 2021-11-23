@@ -5,22 +5,27 @@ import Abilities from './Abilities';
 
 const StyledTable = styled.table`
   border-collapse: collapse;
-  border-bottom: hsl(0, 0%, 95%) 1px solid;
+  border-bottom: hsl(0, 0%, 90%) 1px solid;
+  width: 80%;
 `;
 
 const StyledRow = styled.tr`
   height: 2em;
-  border-top: hsl(0, 0%, 95%) 1px solid;
+  border-top: hsl(0, 0%, 90%) 1px solid;
 `;
 
 const LabelCell = styled.td`
   text-align: right;
-  width: 6em;
   color: hsl(0, 0%, 40%);
 `;
 
 const InfoCell = styled.td`
   padding: 0 0 0 1em;
+`;
+
+const Div = styled.div`
+  grid-area: info;
+  border: solid red 3px;
 `;
 
 const decimetersToFeet = (decimeters) => {
@@ -32,12 +37,12 @@ const decimetersToFeet = (decimeters) => {
 
 const hectogramsToPounds = (hectograms) => {
   const pounds = (hectograms * 0.220462).toFixed(1);
-  return `(${pounds}lbs)`;
+  return `(${pounds} lbs)`;
 };
 
 const Info = ({ color, numbers, types, genera, height, weight, abilities }) => {
   return (
-    <div>
+    <Div>
       <h3>Info</h3>
       <StyledTable>
         <tbody>
@@ -65,14 +70,14 @@ const Info = ({ color, numbers, types, genera, height, weight, abilities }) => {
           <StyledRow>
             <LabelCell>Height</LabelCell>
             <InfoCell>
-              {height / 10}m {decimetersToFeet(height)}
+              {height / 10} m {decimetersToFeet(height)}
             </InfoCell>
           </StyledRow>
 
           <StyledRow>
             <LabelCell>Weight</LabelCell>
             <InfoCell>
-              {weight / 10}kg {hectogramsToPounds(weight)}
+              {weight / 10} kg {hectogramsToPounds(weight)}
             </InfoCell>
           </StyledRow>
 
@@ -90,7 +95,7 @@ const Info = ({ color, numbers, types, genera, height, weight, abilities }) => {
           </StyledRow>
         </tbody>
       </StyledTable>
-    </div>
+    </Div>
   );
 };
 

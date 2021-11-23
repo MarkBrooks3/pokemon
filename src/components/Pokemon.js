@@ -5,7 +5,29 @@ import Training from './PokemonComponents/Training';
 import Stats from './PokemonComponents/Stats';
 import Info from './PokemonComponents/Info';
 import pokemonServices from '../services/pokemon';
+import styled from 'styled-components';
 //TODO: add evolution and maybe pokedex entries
+
+const Page = styled.div`
+  border: 3px solid red;
+  padding: 0 3em;
+  display: grid;
+  grid-template:
+    'title title title ' 100px
+    'image  info  training' auto
+    'image  info  .' auto
+    'stats stats stats ' auto
+    'moves moves moves' auto / 1fr 1fr 1fr;
+`;
+
+const Title = styled.h1`
+  grid-area: title;
+`;
+
+const Image = styled.img`
+  grid-area: image;
+  width: 80%;
+`;
 
 const Pokemon = () => {
   let { id } = useParams();
@@ -23,11 +45,15 @@ const Pokemon = () => {
   }, [setSpecies, setPokemon, id]);
 
   return pokemon && species.growth_rate ? (
-    <div>
+    <Page>
       {console.log('Pokemon', pokemon)}
       {console.log('species', species)}
 
-      <h1>{pokemon.name}</h1>
+      <Title>{pokemon.name}</Title>
+      <Image
+        alt={pokemon.name}
+        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
+      />
       <MoveList moves={pokemon.moves} />
       <Training
         happiness={species.base_happiness}
@@ -45,7 +71,7 @@ const Pokemon = () => {
         weight={pokemon.weight}
         abilities={pokemon.abilities}
       />
-    </div>
+    </Page>
   ) : (
     <div>Loading...</div>
   );

@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import Moves from './Moves';
 //TODO ability to switch which moves are shown by generation
 //TODO add link for each move to have its own page
 //TODO MAYBE add details to all moves like typing and power by calling api
+
+const Div = styled.div`
+  grid-area: moves;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+`;
 
 const MoveList = ({ moves }) => {
   const [generation, setGeneration] = useState('ultra-sun-ultra-moon');
@@ -40,17 +48,24 @@ const MoveList = ({ moves }) => {
   }, [generation, moves]);
 
   return (
-    <div>
-      <h3>Moves</h3>
-      <h4>Level Up Moves</h4>
-      <Moves moves={levelMoves} />
-      <h4>Egg Moves</h4>
-      <Moves moves={eggMoves} />
-      <h4>Tm Moves</h4>
-      <Moves moves={tmMoves} />
-      <h4>Tutor Moves</h4>
-      <Moves moves={tutorMoves} />
-    </div>
+    <Div>
+      <div>
+        <h4>Level Up Moves</h4>
+        <Moves moves={levelMoves} area={'level'} />
+      </div>
+      <div>
+        <h4>Egg Moves</h4>
+        <Moves moves={eggMoves} area={'egg'} />
+      </div>
+      <div>
+        <h4>Tm Moves</h4>
+        <Moves moves={tmMoves} area={'machine'} />
+      </div>
+      <div>
+        <h4>Tutor Moves</h4>
+        <Moves moves={tutorMoves} area={'tutor'} />
+      </div>
+    </Div>
   );
 };
 

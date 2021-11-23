@@ -3,21 +3,20 @@ import styled from 'styled-components';
 
 const StyledTable = styled.table`
   border-collapse: collapse;
-  border-bottom: hsl(0, 0%, 95%) 1px solid;
+  border-bottom: hsl(0, 0%, 90%) 1px solid;
 `;
 
 const StyledRow = styled.tr`
   height: 2em;
-  border-top: hsl(0, 0%, 95%) 1px solid;
+  border-top: hsl(0, 0%, 90%) 1px solid;
 `;
 
 const BarCell = styled.td`
-  width: 255px;
+  width: 80%;
 `;
 
 const TitleCell = styled.td`
   text-align: right;
-  width: 6em;
   color: hsl(0, 0%, 40%);
 `;
 
@@ -49,6 +48,10 @@ const StatBar = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.15);
 `;
 
+const Div = styled.div`
+  grid-area: stats;
+`;
+
 const formatName = (name) => {
   name = name.replace('special-', 'Sp. ');
   return name
@@ -60,7 +63,7 @@ const formatName = (name) => {
 const Stats = ({ stats }) => {
   let total = 0;
   return (
-    <div>
+    <Div>
       <h3>Base Stats</h3>
       <StyledTable>
         <tbody>
@@ -82,7 +85,7 @@ const Stats = ({ stats }) => {
           </StyledRow>
         </tbody>
       </StyledTable>
-    </div>
+    </Div>
   );
 };
 
