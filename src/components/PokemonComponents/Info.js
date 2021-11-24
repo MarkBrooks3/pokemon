@@ -25,7 +25,6 @@ const InfoCell = styled.td`
 
 const Div = styled.div`
   grid-area: info;
-  border: solid red 3px;
 `;
 
 const decimetersToFeet = (decimeters) => {

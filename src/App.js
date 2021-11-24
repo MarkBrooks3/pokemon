@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const Page = styled.div`
-  max-width: 1250px;
+  max-width: 1200px;
   margin: auto;
 `;
 

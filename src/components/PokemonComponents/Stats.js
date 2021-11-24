@@ -12,7 +12,7 @@ const StyledRow = styled.tr`
 `;
 
 const BarCell = styled.td`
-  width: 80%;
+  width: 100%;
 `;
 
 const TitleCell = styled.td`
@@ -81,7 +81,9 @@ const Stats = ({ stats }) => {
           })}
           <StyledRow>
             <TitleCell>Total</TitleCell>
-            <NumberCell>{total}</NumberCell>
+            <NumberCell>
+              <strong>{total}</strong>
+            </NumberCell>
           </StyledRow>
         </tbody>
       </StyledTable>

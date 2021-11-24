@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import PokemonLink from './PokemonLink';
 import pokemonService from '../services/pokemon';
+//TODO add filter and search
 
 const StyledDiv = styled.div`
   display: grid;

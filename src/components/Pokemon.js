@@ -6,6 +6,7 @@ import Stats from './PokemonComponents/Stats';
 import Info from './PokemonComponents/Info';
 import pokemonServices from '../services/pokemon';
 import styled from 'styled-components';
+import Breeding from './PokemonComponents/Breeding';
 //TODO: add evolution and maybe pokedex entries
 
 const Page = styled.div`
@@ -15,13 +16,14 @@ const Page = styled.div`
   grid-template:
     'title title title ' 100px
     'image  info  training' auto
-    'image  info  .' auto
-    'stats stats stats ' auto
+    'image  info  breeding' auto
+    'stats stats . ' auto
     'moves moves moves' auto / 1fr 1fr 1fr;
 `;
 
 const Title = styled.h1`
   grid-area: title;
+  justify-self: center;
 `;
 
 const Image = styled.img`
@@ -54,7 +56,12 @@ const Pokemon = () => {
         alt={pokemon.name}
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
       />
-      <MoveList moves={pokemon.moves} />
+      <Breeding
+        eggGroups={species.egg_groups}
+        genderRate={species.gender_rate}
+        name={pokemon.name}
+        hatchCounter={species.hatch_counter}
+      />
       <Training
         happiness={species.base_happiness}
         exp={pokemon.base_experience}
@@ -71,6 +78,7 @@ const Pokemon = () => {
         weight={pokemon.weight}
         abilities={pokemon.abilities}
       />
+      <MoveList moves={pokemon.moves} />
     </Page>
   ) : (
     <div>Loading...</div>
