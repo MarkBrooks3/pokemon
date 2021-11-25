@@ -30,26 +30,30 @@ const Breeding = ({ eggGroups, genderRate, name, hatchCounter }) => {
     <Div>
       <h3>Breeding</h3>
       <StyledTable>
-        <StyledRow>
-          <LabelCell>Egg Groups</LabelCell>
-          <InfoCell>{eggGroups.map((group) => group.name).join(', ')}</InfoCell>
-        </StyledRow>
-        <StyledRow>
-          <LabelCell>Gender</LabelCell>
-          <InfoCell>
-            {genderRate >= 0
-              ? `${(genderRate / 8) * 100}% female, ${
-                  ((8 - genderRate) / 8) * 100
-                }% male`
-              : `${name} is genderless`}
-          </InfoCell>
-        </StyledRow>
-        <StyledRow>
-          <LabelCell>Egg Cycle</LabelCell>
-          <InfoCell>{`${hatchCounter} (${
-            255 * (hatchCounter + 1)
-          } steps)`}</InfoCell>
-        </StyledRow>
+        <tbody>
+          <StyledRow>
+            <LabelCell>Egg Groups</LabelCell>
+            <InfoCell>
+              {eggGroups.map((group) => group.name).join(', ')}
+            </InfoCell>
+          </StyledRow>
+          <StyledRow>
+            <LabelCell>Gender</LabelCell>
+            <InfoCell>
+              {genderRate >= 0
+                ? `${(genderRate / 8) * 100}% female, ${
+                    ((8 - genderRate) / 8) * 100
+                  }% male`
+                : `${name} is genderless`}
+            </InfoCell>
+          </StyledRow>
+          <StyledRow>
+            <LabelCell>Egg Cycle</LabelCell>
+            <InfoCell>{`${hatchCounter} (${
+              255 * (hatchCounter + 1)
+            } steps)`}</InfoCell>
+          </StyledRow>
+        </tbody>
       </StyledTable>
     </Div>
   );

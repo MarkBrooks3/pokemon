@@ -11,6 +11,7 @@ import Breeding from './PokemonComponents/Breeding';
 
 const Page = styled.div`
   border: 3px solid red;
+  border-radius: 10px;
   padding: 0 3em;
   display: grid;
   grid-template:
@@ -19,6 +20,7 @@ const Page = styled.div`
     'image  info  breeding' auto
     'stats stats . ' auto
     'moves moves moves' auto / 1fr 1fr 1fr;
+  background-color: white;
 `;
 
 const Title = styled.h1`
@@ -28,7 +30,7 @@ const Title = styled.h1`
 
 const Image = styled.img`
   grid-area: image;
-  width: 80%;
+  width: 100%;
 `;
 
 const Pokemon = () => {
@@ -47,14 +49,14 @@ const Pokemon = () => {
   }, [setSpecies, setPokemon, id]);
 
   return pokemon && species.growth_rate ? (
-    <Page>
+    <Page color={species.color}>
       {console.log('Pokemon', pokemon)}
       {console.log('species', species)}
 
       <Title>{pokemon.name}</Title>
       <Image
         alt={pokemon.name}
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
+        src={pokemon.sprites.other['official-artwork'].front_default}
       />
       <Breeding
         eggGroups={species.egg_groups}
