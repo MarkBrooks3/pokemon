@@ -2,6 +2,7 @@ import React from 'react';
 import Types from './Types';
 import styled from 'styled-components';
 import Abilities from './Abilities';
+import { decimetersToFeet, hectogramsToPounds } from '../../services/helper';
 
 const StyledTable = styled.table`
   border-collapse: collapse;
@@ -26,18 +27,6 @@ const InfoCell = styled.td`
 const Div = styled.div`
   grid-area: info;
 `;
-
-const decimetersToFeet = (decimeters) => {
-  let inches = (decimeters * 3.937).toFixed(0);
-  const feet = (inches / 12).toFixed(0);
-  inches %= 12;
-  return `(${feet}'${inches}")`;
-};
-
-const hectogramsToPounds = (hectograms) => {
-  const pounds = (hectograms * 0.220462).toFixed(1);
-  return `(${pounds} lbs)`;
-};
 
 const Info = ({ color, numbers, types, genera, height, weight, abilities }) => {
   return (

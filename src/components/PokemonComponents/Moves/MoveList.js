@@ -12,6 +12,11 @@ const Div = styled.div`
   justify-content: space-around;
 `;
 
+const MoveColumn = styled.div`
+  text-align: center;
+  border: 1px solid red;
+`;
+
 const MoveList = ({ moves }) => {
   const [generation, setGeneration] = useState('ultra-sun-ultra-moon');
   const [levelMoves, setLevelMoves] = useState([]);
@@ -49,22 +54,22 @@ const MoveList = ({ moves }) => {
 
   return (
     <Div>
-      <div>
+      <MoveColumn>
         <h4>Level Up Moves</h4>
         <Moves moves={levelMoves} area={'level'} />
-      </div>
-      <div>
+      </MoveColumn>
+      <MoveColumn>
         <h4>Egg Moves</h4>
         <Moves moves={eggMoves} area={'egg'} />
-      </div>
-      <div>
+      </MoveColumn>
+      <MoveColumn>
         <h4>Tm Moves</h4>
         <Moves moves={tmMoves} area={'machine'} />
-      </div>
-      <div>
+      </MoveColumn>
+      <MoveColumn>
         <h4>Tutor Moves</h4>
         <Moves moves={tutorMoves} area={'tutor'} />
-      </div>
+      </MoveColumn>
     </Div>
   );
 };

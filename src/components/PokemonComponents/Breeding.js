@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { formatName } from '../../services/helper';
 
 const StyledTable = styled.table`
   border-collapse: collapse;
@@ -34,16 +35,16 @@ const Breeding = ({ eggGroups, genderRate, name, hatchCounter }) => {
           <StyledRow>
             <LabelCell>Egg Groups</LabelCell>
             <InfoCell>
-              {eggGroups.map((group) => group.name).join(', ')}
+              {eggGroups.map((group) => formatName(group.name)).join(', ')}
             </InfoCell>
           </StyledRow>
           <StyledRow>
             <LabelCell>Gender</LabelCell>
             <InfoCell>
               {genderRate >= 0
-                ? `${(genderRate / 8) * 100}% female, ${
+                ? `${(genderRate / 8) * 100}% Female, ${
                     ((8 - genderRate) / 8) * 100
-                  }% male`
+                  }% Male`
                 : `${name} is genderless`}
             </InfoCell>
           </StyledRow>

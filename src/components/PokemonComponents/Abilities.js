@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { formatName } from '../../services/helper';
 //TODO add styles
 
 const Ability = styled.li`
@@ -19,10 +20,10 @@ const Abilities = ({ abilities }) => {
     <div>
       {abilities.map((a) =>
         a.is_hidden ? (
-          <Hidden key={a.slot}>{a.ability.name} (hidden)</Hidden>
+          <Hidden key={a.slot}>{formatName(a.ability.name)} (hidden)</Hidden>
         ) : (
           <Ability key={a.slot}>
-            {a.slot}. {a.ability.name}
+            {a.slot}. {formatName(a.ability.name)}
           </Ability>
         )
       )}

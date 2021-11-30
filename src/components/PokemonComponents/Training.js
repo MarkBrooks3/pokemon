@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { formatName } from '../../services/helper';
 //TODO add ev yield
-//format text
 
 const StyledTable = styled.table`
   border-collapse: collapse;
@@ -50,7 +50,7 @@ const Training = ({ happiness, exp, catchRate, growth }) => {
 
           <StyledRow>
             <LabelCell>Growth Rate</LabelCell>
-            <InfoCell>{growth}</InfoCell>
+            <InfoCell>{formatName(growth)}</InfoCell>
           </StyledRow>
         </tbody>
       </StyledTable>

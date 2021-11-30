@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { formatName } from '../../services/helper';
 
 const StyledTable = styled.table`
   border-collapse: collapse;
@@ -52,14 +53,6 @@ const Div = styled.div`
   grid-area: stats;
 `;
 
-const formatName = (name) => {
-  name = name.replace('special-', 'Sp. ');
-  return name
-    .split(' ')
-    .map((word) => word[0].toUpperCase() + word.slice(1))
-    .join(' ');
-};
-
 const Stats = ({ stats }) => {
   let total = 0;
   return (
@@ -71,7 +64,9 @@ const Stats = ({ stats }) => {
             total += s.base_stat;
             return (
               <StyledRow key={s.stat.name} i={i}>
-                <TitleCell>{formatName(s.stat.name)}</TitleCell>
+                <TitleCell>
+                  {formatName(s.stat.name).replace('Special', 'Sp. ')}
+                </TitleCell>
                 <NumberCell>{s.base_stat}</NumberCell>
                 <BarCell>
                   <StatBar value={s.base_stat} />

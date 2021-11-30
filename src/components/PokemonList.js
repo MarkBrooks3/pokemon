@@ -11,6 +11,7 @@ const StyledDiv = styled.div`
   border: solid 3px red;
   padding: 3em;
   justify-content: center;
+  background-color: white;
 `;
 
 const PokemonList = () => {

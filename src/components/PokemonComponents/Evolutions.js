@@ -1,8 +1,19 @@
-import {useState}, React from 'react'
+import React, { useState, useEffect } from 'react';
+import pokemonService from '../../services/pokemon';
 
-const Evolution = () => {
-    const chain = useState()
-    return <div>
+const Evolution = ({ url }) => {
+  const [chain, setChain] = useState({});
 
-    </div>
-}
+  useEffect(() => {
+    const setData = async () => {
+      const newData = await pokemonService.getUrl(url);
+      console.log(newData);
+      setChain(newData);
+    };
+    setData();
+  }, []);
+
+  return <div></div>;
+};
+
+export default Evolution;

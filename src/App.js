@@ -10,7 +10,7 @@ import PokemonList from './components/PokemonList';
 const GlobalStyle = createGlobalStyle`
   body {
     font-family: Roboto;
-    background-color: #DDDDDD 
+    background-image: url('/PokemonBackground.jpg')
   }
 `;
 

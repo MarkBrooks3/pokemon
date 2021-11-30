@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { formatName, sortMoves } from '../../../services/helper';
 
 const StyledTable = styled.table`
   border-collapse: collapse;
@@ -19,25 +20,6 @@ const NumberCell = styled.td`
   text-align: right;
   padding: 0 0 0 1em;
 `;
-
-const formatName = (name) => {
-  return name
-    .split('-')
-    .map((w) => w[0].toUpperCase() + w.slice(1))
-    .join(' ');
-};
-
-const sortMoves = (moves) => {
-  if (moves[0] && moves[0].level > -1) moves.sort((a, b) => a.level - b.level);
-  else
-    moves.sort((a, b) => {
-      const textA = a.move.name;
-      const textB = b.move.name;
-      return textA < textB ? -1 : textA > textB ? 1 : 0;
-    });
-
-  return moves;
-};
 
 const Moves = ({ moves }) => {
   return (

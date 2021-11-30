@@ -7,6 +7,7 @@ import Info from './PokemonComponents/Info';
 import pokemonServices from '../services/pokemon';
 import styled from 'styled-components';
 import Breeding from './PokemonComponents/Breeding';
+import Evolution from './PokemonComponents/Evolutions';
 //TODO: add evolution and maybe pokedex entries
 
 const Page = styled.div`
@@ -70,7 +71,6 @@ const Pokemon = () => {
         catchRate={species.capture_rate}
         growth={species.growth_rate.name}
       />
-      <Stats stats={pokemon.stats} />
       <Info
         color={species.color}
         numbers={species.pokedex_numbers}
@@ -80,6 +80,8 @@ const Pokemon = () => {
         weight={pokemon.weight}
         abilities={pokemon.abilities}
       />
+      <Stats stats={pokemon.stats} />
+      <Evolution url={species.evolution_chain.url} />
       <MoveList moves={pokemon.moves} />
     </Page>
   ) : (
