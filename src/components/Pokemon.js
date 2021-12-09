@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import MoveList from './PokemonComponents/Moves/MoveList';
+import MoveList from './PokemonComponents/Moves/Moves';
 import Training from './PokemonComponents/Training';
 import Stats from './PokemonComponents/Stats';
 import Info from './PokemonComponents/Info';
-import pokemonServices from '../services/pokemon';
+import { getOne, getUrl } from '../services/pokemon';
 import styled from 'styled-components';
 import Breeding from './PokemonComponents/Breeding';
 import Evolution from './PokemonComponents/Evolutions';
+import PreviousAndNext from './PokemonComponents/PreviousAndNext';
 //TODO: add evolution and maybe pokedex entries
 
 const Page = styled.div`
@@ -41,8 +42,8 @@ const Pokemon = () => {
 
   useEffect(() => {
     const setData = async () => {
-      const pokemonData = await pokemonServices.getOne(id);
-      const speciesData = await pokemonServices.getUrl(pokemonData.species.url);
+      const pokemonData = await getOne(id);
+      const speciesData = await getUrl(pokemonData.species.url);
       setPokemon(pokemonData);
       setSpecies(speciesData);
     };
@@ -54,6 +55,7 @@ const Pokemon = () => {
       {console.log('Pokemon', pokemon)}
       {console.log('species', species)}
 
+      <PreviousAndNext id={id} />
       <Title>{pokemon.name}</Title>
       <Image
         alt={pokemon.name}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import PokemonLink from './PokemonLink';
-import pokemonService from '../services/pokemon';
+import { getAll } from '../services/pokemon';
 //TODO add filter and search
 
 const StyledDiv = styled.div`
@@ -19,7 +19,7 @@ const PokemonList = () => {
 
   useEffect(() => {
     const setData = async () => {
-      const newData = await pokemonService.getAll();
+      const newData = await getAll();
       setPokemons(newData.results);
     };
     setData();

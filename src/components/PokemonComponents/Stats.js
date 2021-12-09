@@ -13,7 +13,7 @@ const StyledRow = styled.tr`
 `;
 
 const BarCell = styled.td`
-  width: 100%;
+  width: 80%;
 `;
 
 const TitleCell = styled.td`
